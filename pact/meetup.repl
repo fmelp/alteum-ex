@@ -1,0 +1,36 @@
+;keys available for this test
+(env-keys ["user_one_key", "user_two_key", "user_three_key"])
+;keysets available for this test
+;will be able to set this in the pact-lang-api too
+(env-data {
+    "user_one": ["user_one_key"],
+    "user_two": ["user_two_key"],
+    "user_three": ["user_three_key"]
+}
+)
+
+
+(begin-tx)
+(load "meetup.pact")
+(commit-tx)
+
+(begin-tx)
+
+(use meetup)
+
+(join-meetup "user_one")
+(join-meetup "user_two")
+(join-meetup "user_three")
+
+(commit-tx)
+
+
+(begin-tx)
+
+(use meetup)
+
+(env-chain-data { "sender": "user_one"})
+;they show-up in alphabetical order
+(expect "we have all three users" ["user_one", "user_three", "user_two"] (get-members))
+
+(commit-tx)

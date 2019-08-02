@@ -1,0 +1,7 @@
+codeFile: ./pact/meetup.pact
+data:
+  contract-owner: ["511dc4fbe05b55c4876823d9131656fafc3e2a592f2545f20fc17050c414edef"]
+keyPairs:
+  - public: 511dc4fbe05b55c4876823d9131656fafc3e2a592f2545f20fc17050c414edef
+    secret: f59233d7408114648d556b72ffe34ce080b51cd0ea6a5719ee432c834f1354e2
+nonce: meetup-contract
